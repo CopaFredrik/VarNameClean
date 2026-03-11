@@ -316,6 +316,5 @@ Temporary directories and files are used so tests do not affect real files [1].
 - Column index from the CLI is **1-based**; the internal API uses **0-based** indices [2].
 - Only the specified column is normalized; other columns are left intact.
 - The script assumes a well-formed delimited file; there is no extensive error handling for malformed CSV beyond what Python’s `csv` module provides.
-- Maximum variable name length is **64 characters** after normalization [2].
 
 ---
