@@ -1,6 +1,6 @@
-# normalize_vars.py Documentation
+# VarTrans.py Documentation
 
-This project provides a command-line utility to **normalize variable names** in a specific column of a CSV (or delimited) file, along with a **test suite** to verify its behavior. The main script is implemented in `normalize_vars.py` (represented here by `VarTransV3.py`), and the tests are in `Test_VarTrans.py` [1][2].
+This project provides a command-line utility to **translate variable names** in a specific column of a CSV (or delimited) file, along with a **test suite** to verify its behavior. The main script is implemented in `VarTrans.py` (represented here by `VarTransV3.py`), and the tests are in `Test_VarTrans.py` [1][2].
 
 ---
 
@@ -26,7 +26,7 @@ This project provides a command-line utility to **normalize variable names** in 
 
 ## Overview
 
-The **normalize_vars** tool reads a delimited text file (typically CSV), **normalizes variable names** in a specified column, and writes the updated data to an output file.
+The **VarTrans** tool reads a delimited text file (typically CSV), **normalizes variable names** in a specified column, and writes the updated data to an output file.
 
 Normalization is designed for environments where variable names must follow a restricted character set and length limit (e.g., PLC tags, code generators).
 
@@ -41,7 +41,7 @@ Core behavior is implemented in:
 ## Installation
 
 1. Ensure you have **Python 3** installed.
-2. Place the script (e.g., `normalize_vars.py`, based on `VarTransV3.py`) and the test file `Test_VarTrans.py` in the same directory [1][2].
+2. Place the script (e.g., `VarTransXX.py`, based on `VarTransV3.py`) and the test file `Test_VarTrans.py` in the same directory [1][2].
 
 No external dependencies are required beyond the Python standard library (`sys`, `re`, `csv`, `os`, `tempfile`, `subprocess`, `unittest`, `textwrap`) [1][2].
 
@@ -54,7 +54,7 @@ No external dependencies are required beyond the Python standard library (`sys`,
 The script is intended to be run from the command line as follows [2]:
 
 ```bash
-python normalize_vars.py <input_file> <output_file> <column_index> [delimiter] [has_header]
+python VarTransXX.py <input_file> <output_file> <column_index> [delimiter] [has_header]
 ```
 
 - `<input_file>`  
@@ -77,7 +77,7 @@ python normalize_vars.py <input_file> <output_file> <column_index> [delimiter] [
 If the number of arguments is incorrect (less than 4 or more than 6), the script prints a usage message and exits with code `1` [2]:
 
 ```text
-Usage: python normalize_vars.py <input_file> <output_file> <column_index> [delimiter] [has_header]
+Usage: python VarTrans.py <input_file> <output_file> <column_index> [delimiter] [has_header]
   <column_index> is 1-based (1 = first column).
   [delimiter]   is optional, default is ','.
   [has_header]  is optional, 'yes' or 'no' (default: 'yes').
@@ -88,7 +88,7 @@ Usage: python normalize_vars.py <input_file> <output_file> <column_index> [delim
 #### 1. Normalize the second column of a comma-separated file with a header
 
 ```bash
-python normalize_vars.py input.csv output.csv 2
+python VarTrans.py input.csv output.csv 2
 ```
 
 - Uses default delimiter: `,`
@@ -112,7 +112,7 @@ The **Variable** column will be normalized to:
 #### 2. Normalize the third column of a semicolon-separated file without a header
 
 ```bash
-python normalize_vars.py data.txt data_out.txt 3 ";" no
+python VarTrans.py data.txt data_out.txt 3 ";" no
 ```
 
 - Delimiter: `";"`
@@ -229,7 +229,7 @@ def process_file(
 ```python
 def main():
     # Usage:
-    #   python normalize_vars.py <input_file> <output_file> <column_index> [delimiter] [has_header]
+    #   python VarTrans.py <input_file> <output_file> <column_index> [delimiter] [has_header]
     #
     #   <column_index> : 1-based (1 = first column)
     #   [delimiter]    : optional, default ","
@@ -265,7 +265,7 @@ From the directory containing both the test file and script:
 python Test_VarTrans.py
 ```
 
-By default this tests `normalize_vars.py` [1]. You can override the script name:
+By default this tests `VarTrans.py` [1]. You can override the script name:
 
 ```bash
 python Test_VarTrans.py myscript.py
@@ -273,7 +273,7 @@ python Test_VarTrans.py myscript.py
 
 The test file supports an **optional script name as the first positional argument** [1]:
 
-- `python Test_VarTrans.py` → tests `normalize_vars.py`
+- `python Test_VarTrans.py` → tests `VarTrans.py`
 - `python Test_VarTrans.py myscript.py` → tests `myscript.py`
 
 It also ensures the script exists before running tests; otherwise it prints an error and exits [1].
